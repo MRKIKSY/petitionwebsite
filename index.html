@@ -359,11 +359,16 @@
 
       <!-- Moved the form to the top of the viewer -->
       <form id="uploadForm" class="hidden" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
-        <button type="submit">Send New Petition</button>
-        <input type="text" name="name" placeholder="Your Full Name" required />
-        <textarea name="details" placeholder="Brief details of how you were scammed..."></textarea>
-        <input type="file" name="attachments" multiple accept=".pdf,image/*" />
-        <input type="hidden" name="company" id="selectedCompany" />
+       
+        <form id="uploadForm" class="hidden" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
+  <input type="text" name="name" placeholder="Your Full Name" required />
+  <input type="email" name="email" placeholder="Your Email Address" required />
+  <textarea name="details" placeholder="Brief details of how you were scammed..." required></textarea>
+  <input type="file" name="attachments" multiple accept=".pdf,image/*" />
+  <input type="hidden" name="company" id="selectedCompany" />
+  <button type="submit">Send New Petition</button>
+</form>
+
       </form>
 
       <div id="confirmationMessage">
