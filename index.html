@@ -243,99 +243,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fraudulent Allegations Companies Database</title>
   <style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background: #eee;
-  }
-  .container {
-    background: white;
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  h1 {
-    color: #d32f2f;
-    text-align: center;
-  }
-  #searchBox {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 15px;
-  }
-  #results {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: #fafafa;
-    max-height: 200px;
-    overflow-y: auto;
-  }
-  #results li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    cursor: pointer;
-  }
-  #results li:hover {
-    background-color: #f0f0f0;
-  }
-  .hidden { display: none; }
-
-  #pdfViewerContainer {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: white;
-    z-index: 1000;
-    overflow-y: auto;
-    padding: 20px 20px 80px 20px; /* Increased bottom padding */
-  }
-  #pdfViewerContainer button {
-    margin: 10px 5px;
-    padding: 10px 20px;
-    background: #d32f2f;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  #uploadForm {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #f9f9f9;
-  }
-  #uploadForm textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-  }
-  #uploadForm input[type="file"],
-  #uploadForm input[type="text"] {
-    margin: 10px 0;
-    width: 100%;
-    padding: 8px;
-  }
-  #uploadForm button {
-    background: green;
-    margin-top: 10px;
-    margin-bottom: 20px; /* Added margin to push it into view */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-</style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #eee;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #d32f2f;
+      text-align: center;
+    }
+    #searchBox {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    #results {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fafafa;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    #results li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+    #results li:hover {
+      background-color: #f0f0f0;
+    }
+    .hidden {
+      display: none;
+    }
+    #pdfViewerContainer {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: white;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px 20px 80px 20px; /* More bottom padding */
+    }
+    #pdfViewerContainer button {
+      margin: 10px 5px;
+      padding: 10px 20px;
+      background: #d32f2f;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #uploadForm {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    #uploadForm textarea {
+      width: 100%;
+      height: 60px; /* Reduced from 100px to 60px */
+      padding: 10px;
+    }
+    #uploadForm input[type="file"],
+    #uploadForm input[type="text"] {
+      margin: 10px 0;
+      width: 100%;
+      padding: 8px;
+    }
+    #uploadForm button {
+      background: green;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -356,6 +357,7 @@
       </form>
     </div>
   </div>
+
 
   <script>
     const searchBox = document.getElementById("searchBox");
