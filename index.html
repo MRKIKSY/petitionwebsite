@@ -353,8 +353,8 @@
 </head>
 <body>
   <div class="container">
-    <h1>Fraudulent Allegations Companies Database</h1>
-    <input type="text" id="searchBox" placeholder="Search company..." />
+    <h1> Nigeria Fraudulent Allegations Companies Database</h1>
+    <input type="text" id="searchBox" placeholder="Search company..Sujimoto..Pwan" />
     <ul id="results"></ul>
 
     <div id="pdfViewerContainer" class="hidden">
@@ -454,13 +454,22 @@
     body: formData,
   });
 
-  if (response.ok) {
-    alert('Petition submitted successfully!');
-    uploadForm.reset();
-    uploadForm.classList.add("hidden");
-  } else {
-    alert('Failed to submit petition.');
-  }
+ if (response.ok) {
+  uploadForm.reset();
+  uploadForm.classList.add("hidden");
+
+  // Show confirmation message
+  const confirmationMessage = document.getElementById("confirmationMessage");
+  confirmationMessage.style.display = "block";
+
+  // Optionally auto-hide after 5 seconds
+  setTimeout(() => {
+    confirmationMessage.style.display = "none";
+  }, 5000);
+} else {
+  alert('Failed to submit petition.');
+}
+
 });
 
   </script>
