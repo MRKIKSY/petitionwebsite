@@ -335,6 +335,16 @@
       cursor: pointer;
       margin-bottom: 10px;
     }
+    #confirmationMessage {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      font-weight: bold;
+      text-align: center;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -348,17 +358,20 @@
       <div id="pdfContent"></div>
       <button onclick="toggleUploadForm()">Submit a New Petition</button>
 
-      <form id="uploadForm" class="hidden" enctype="multipart/form-data">
-        <button type="submit">Send New Petition</button> <!-- moved to top -->
+      <form id="uploadForm" class="hidden" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
+        <button type="submit">Send New Petition</button>
         <input type="text" name="name" placeholder="Your Full Name" required />
         <textarea name="details" placeholder="Brief details of how you were scammed..."></textarea>
         <input type="file" name="attachments" multiple accept=".pdf,image/*" />
         <input type="hidden" name="company" id="selectedCompany" />
       </form>
+
+      <div id="confirmationMessage">
+        Thank you for sending your new Petition against the company you have an issue with. <br />
+        The petition will be made live on the website within 24 hours to warn others.
+      </div>
     </div>
   </div>
-
-
   <script>
     const searchBox = document.getElementById("searchBox");
     const resultsList = document.getElementById("results");
