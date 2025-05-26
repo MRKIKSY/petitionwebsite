@@ -355,12 +355,9 @@
 
     <div id="pdfViewerContainer" class="hidden">
       <button onclick="closeViewer()">Close</button>
-
-      <!-- Moved THIS button directly after Close -->
       <button onclick="toggleUploadForm()">Submit a New Petition</button>
 
-      <div id="pdfContent"></div>
-
+      <!-- Moved the form to the top of the viewer -->
       <form id="uploadForm" class="hidden" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
         <button type="submit">Send New Petition</button>
         <input type="text" name="name" placeholder="Your Full Name" required />
@@ -373,6 +370,8 @@
         Thank you for sending your new Petition against the company you have an issue with. <br />
         The petition will be made live on the website within 24 hours to warn others.
       </div>
+
+      <div id="pdfContent"></div>
     </div>
   </div>
   <script>
