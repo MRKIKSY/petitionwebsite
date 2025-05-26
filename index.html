@@ -355,8 +355,11 @@
 
     <div id="pdfViewerContainer" class="hidden">
       <button onclick="closeViewer()">Close</button>
-      <div id="pdfContent"></div>
+
+      <!-- Moved THIS button directly after Close -->
       <button onclick="toggleUploadForm()">Submit a New Petition</button>
+
+      <div id="pdfContent"></div>
 
       <form id="uploadForm" class="hidden" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
         <button type="submit">Send New Petition</button>
