@@ -78,6 +78,7 @@ def root():
 @app.route('/submit', methods=['POST'])
 def submit_petition():
     name = request.form['name']
+    email = request.form['email']
     details = request.form['details']
     company = request.form['company']
     files = request.files.getlist('attachments')
@@ -86,7 +87,9 @@ def submit_petition():
     msg['Subject'] = f'New Petition Against {company}'
     msg['From'] = EMAIL_ADDRESS
     msg['To'] = EMAIL_ADDRESS
-    msg.set_content(f"Petition by {name}\n\nCompany: {company}\n\nDetails:\n{details}")
+    msg.set_content(
+        f"Petition by {name}\nEmail: {email}\n\nCompany: {company}\n\nDetails:\n{details}"
+    )
 
     for file in files:
         file_data = file.read()
@@ -97,6 +100,7 @@ def submit_petition():
         smtp.send_message(msg)
 
     return {'status': 'success'}
+
 
 @app.route('/data/<path:path>')
 def send_data(path):
