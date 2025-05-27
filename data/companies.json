@@ -1,18 +1,23 @@
 [
   {
-    "name": "PWAN Champion Realtors and Estates Limited",
-    "heading": "Fraud Petitions against PWAN Champion Realtors and Estates Limited",
-    "petitions": [
-      {
-        "file": "petitions/3.1_Million_Naira_Fake_Cheque_Petition_against_Pwan_Champion_Realtors_and_Estates_Limited.pdf",
-        "title": "₦3,120,000.00 Investment Fraud petition against PWAN Champion Realtors and Estates Limited"
-      },
-      {
-        "file": "petitions/55_Million_Naira_Land_Allocation_Fraud_Petition_against_Pwan_Champion_Realtors_and_Estates_Limited.pdf",
-        "title": "₦55 million Land Allocation fraud against PWAN Champion Realtors and Estates Limited"
-      }
-    ]
-  },
+  "name": "PWAN Champion Realtors and Estates Limited",
+  "heading": "Fraud Petitions against PWAN Champion Realtors and Estates Limited",
+  "petitions": [
+    {
+      "file": "petitions/3.1_Million_Naira_Fake_Cheque_Petition_against_Pwan_Champion_Realtors_and_Estates_Limited.pdf",
+      "title": "₦3,120,000.00 Investment Fraud petition against PWAN Champion Realtors and Estates Limited"
+    },
+    {
+      "file": "petitions/55_Million_Naira_Land_Allocation_Fraud_Petition_against_Pwan_Champion_Realtors_and_Estates_Limited.pdf",
+      "title": "₦55 million Land Allocation fraud against PWAN Champion Realtors and Estates Limited"
+    },
+    {
+      "file": "petitions/2.4_Million_Petition_Against_PWAN_Asaba.pdf",
+      "title": "₦2,400,000.00 Land Allocation petition against PWAN Champion Realtors and Estates Limited"
+    }
+  ]
+},
+
   {
     "name": "Sujimoto Construction Limited",
     "heading": "Petitions against Sujimoto Construction Limited",
