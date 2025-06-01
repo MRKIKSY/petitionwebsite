@@ -22,24 +22,14 @@
       padding: 25px 30px;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-sizing: border-box;
     }
 
     h1 {
       color: #d32f2f;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       text-align: center;
-    }
-
-    /* Purpose / Mission Section */
-    #mission {
-      background: #fff4e5;
-      border: 1px solid #ffd89b;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 25px;
-      font-size: 1.1rem;
-      color: #6a4a00;
     }
 
     /* Search Input */
@@ -49,7 +39,7 @@
       font-size: 16px;
       border: 1.5px solid #ccc;
       border-radius: 8px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       box-sizing: border-box;
       transition: border-color 0.3s ease;
     }
@@ -59,25 +49,46 @@
       box-shadow: 0 0 6px #d32f2f66;
     }
 
-    /* Results List */
+    /* Mission and Info Sections - consistent with footer style */
+    .info-section {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 25px 30px;
+      margin-bottom: 30px;
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .info-section p {
+      margin: 0 0 1em 0;
+    }
+    .info-section strong {
+      color: #d32f2f;
+    }
+    .info-section a {
+      color: #d32f2f;
+      text-decoration: underline;
+    }
+
+    /* Results list */
     #results {
       list-style: none;
-      margin: 0;
       padding: 0;
+      margin: 0 0 30px 0;
       border: 1px solid #ccc;
       border-radius: 8px;
-      max-height: 220px;
-      overflow-y: auto;
       background: #fafafa;
+      max-height: 200px;
+      overflow-y: auto;
     }
     #results li {
-      padding: 12px 15px;
+      padding: 10px 15px;
       border-bottom: 1px solid #ddd;
       cursor: pointer;
-      transition: background-color 0.2s ease;
     }
     #results li:hover {
-      background-color: #ffe6e6;
+      background-color: #f0f0f0;
     }
 
     /* PDF Viewer Container */
@@ -87,122 +98,87 @@
       width: 100vw;
       height: 100vh;
       background: white;
-      z-index: 1100;
+      z-index: 1000;
       overflow-y: auto;
-      padding: 30px 30px 90px 30px;
-      box-sizing: border-box;
+      padding: 20px 20px 80px 20px;
       display: none;
-      flex-direction: column;
-      align-items: flex-start;
-      border-top: 5px solid #d32f2f;
-    }
-    #pdfViewerContainer.active {
-      display: flex;
+      box-sizing: border-box;
     }
     #pdfViewerContainer button {
+      margin: 10px 5px;
+      padding: 10px 20px;
       background: #d32f2f;
       color: white;
       border: none;
-      border-radius: 8px;
-      padding: 12px 25px;
-      margin: 10px 10px 20px 0;
+      border-radius: 6px;
       cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
     }
-    #pdfViewerContainer button:hover {
-      background-color: #a82525;
-    }
-    #pdfViewerContainer button.green-button {
-      background-color: #2e7d32;
-    }
-    #pdfViewerContainer button.green-button:hover {
-      background-color: #1b4d1b;
+    .green-button {
+      background-color: green !important;
     }
 
     /* Upload Form */
     #uploadForm {
-      width: 100%;
-      max-width: 600px;
-      background: #f7f7f7;
+      margin-top: 20px;
+      padding: 15px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
+      background: #f9f9f9;
       display: none;
-      box-sizing: border-box;
     }
-    #uploadForm input[type="text"],
-    #uploadForm input[type="email"],
-    #uploadForm textarea,
-    #uploadForm input[type="file"] {
+    #uploadForm textarea {
       width: 100%;
-      margin: 10px 0;
-      padding: 12px;
-      font-size: 1rem;
-      border: 1.5px solid #ccc;
-      border-radius: 6px;
-      box-sizing: border-box;
+      height: 60px;
+      padding: 10px;
+      margin-bottom: 10px;
       resize: vertical;
+      font-size: 14px;
     }
-    #uploadForm button[type="submit"] {
-      background-color: #2e7d32;
+    #uploadForm input[type="file"],
+    #uploadForm input[type="text"],
+    #uploadForm input[type="email"] {
+      margin: 10px 0;
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    #uploadForm button {
+      background: green;
       color: white;
       border: none;
-      padding: 12px 30px;
-      border-radius: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
       cursor: pointer;
-      font-weight: 600;
-      margin-top: 10px;
-      transition: background-color 0.3s ease;
-    }
-    #uploadForm button[type="submit"]:hover {
-      background-color: #1b4d1b;
+      margin-bottom: 10px;
+      font-size: 16px;
     }
 
-    /* Confirmation Message */
     #confirmationMessage {
-      max-width: 600px;
-      background: #e8f5e9;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: #e8f5e9;
       color: #2e7d32;
-      font-weight: 700;
-      padding: 15px 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
       display: none;
-      box-sizing: border-box;
-    }
-
-    /* Informative Section below */
-    section {
-      margin-top: 30px;
-      background: #fffbea;
-      border: 1px solid #f4e5b7;
-      border-radius: 8px;
-      padding: 20px;
       font-size: 1rem;
-      color: #6a4a00;
-      line-height: 1.5;
-    }
-    section a {
-      color: #d32f2f;
-      font-weight: 700;
-      text-decoration: underline;
     }
 
     /* Footer */
     footer {
       background-color: #f5f5f5;
       padding: 35px 30px;
-      margin-top: 40px;
       font-size: 14px;
       color: #333;
       border-top: 1px solid #ddd;
       max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 40px auto 0 auto;
       border-radius: 0 0 10px 10px;
       box-sizing: border-box;
+      line-height: 1.5;
+      text-align: center;
     }
     footer p {
       margin: 6px 0;
@@ -216,55 +192,52 @@
       font-size: 16px;
       font-weight: 700;
     }
+
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Nigeria Scam Allegations Companies Database</h1>
 
-    <div id="mission" aria-label="Website Mission Statement">
-      <p>
-        Our mission is to provide a transparent, community-driven platform that establishes and displays live petitions against rogue companies alleged to have defrauded individuals. 
-        By sharing verified evidence and petitions here, we help warn the public and promote accountability.
-      </p>
-    </div>
-
     <input type="text" id="searchBox" placeholder="Search company... e.g., Sujimoto, PWAN" aria-label="Search company" />
-    <ul id="results" aria-live="polite" aria-relevant="additions"></ul>
 
-    <div id="pdfViewerContainer" role="dialog" aria-modal="true" aria-labelledby="pdfViewerTitle">
-      <button onclick="closeViewer()" aria-label="Close viewer">Close</button>
-      <button class="green-button" onclick="toggleUploadForm()" aria-expanded="false" aria-controls="uploadForm">Submit a New Petition</button>
-
-      <form id="uploadForm" enctype="multipart/form-data" aria-hidden="true">
-        <input type="text" name="name" placeholder="Your Full Name" required aria-required="true" />
-        <input type="email" name="email" placeholder="Your Email Address" required aria-required="true" />
-        <textarea name="details" placeholder="Brief details of how you were scammed..." required aria-required="true"></textarea>
-        <input type="file" name="attachments" multiple accept=".pdf,image/*" aria-describedby="fileHelp" />
-        <small id="fileHelp" style="color:#666;">Attach any evidence files (PDF or images).</small>
-        <input type="hidden" name="company" id="selectedCompany" />
-        <button type="submit">Send New Petition</button>
-      </form>
-
-      <div id="confirmationMessage" role="alert" aria-live="assertive">
-        Thank you for sending your new petition. It will be reviewed and go live within 24 hours to warn others.
-      </div>
-
-      <div id="pdfContent" aria-live="polite" style="margin-top: 20px;"></div>
+    <div class="info-section" aria-label="Mission statement">
+      <p>Our mission is to provide a transparent, community-driven platform that establishes and displays live petitions against rogue companies alleged to have defrauded individuals. By sharing verified evidence and petitions here, we help warn the public and promote accountability.</p>
     </div>
 
-    <section>
+    <div class="info-section" aria-label="Important scam information">
       <p><strong>Have you been scammed by a Real Estate Company in Lagos?</strong><br />
-        Send your evidence of payment to 
-        <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>. A <strong>PETITION</strong> to EFCC will be automatically created for you, and the company name and petition will be made live on this website to <strong>WARN</strong> others.
-      </p>
+      Send your evidence of payment to <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>. A <strong>PETITION</strong> to EFCC will be automatically created for you, and the company name and petition will be made live on this website to <strong>WARN</strong> others.</p>
 
       <p><strong>Does your Company appear on this list?</strong><br />
-        To get your company name removed from this database, contact 
-        <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>, providing evidence that you have <strong>SUFFICIENTLY</strong> clarified and paid out the fraudulent allegations against your company. Once the petitioner <strong>CONFIRMS</strong> receipt, your company will be removed from the database within 24 hours.
-      </p>
-    </section>
+      To get your company name removed from this database, contact <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>, providing evidence that you have <strong>SUFFICIENTLY</strong> clarified and paid out the fraudulent allegations against your company. Once the petitioner <strong>CONFIRMS</strong> receipt, your company will be removed from the database within 24 hours.</p>
+    </div>
 
+    <ul id="results" role="list" aria-label="Search results"></ul>
+  </div>
+
+  <!-- PDF Viewer and Petition Form -->
+  <div id="pdfViewerContainer" role="dialog" aria-modal="true" aria-labelledby="pdfViewerTitle" aria-describedby="pdfContentDesc">
+    <button onclick="closeViewer()" aria-label="Close petition viewer">Close</button>
+    <button class="green-button" onclick="toggleUploadForm()" aria-expanded="false" aria-controls="uploadForm">Submit a New Petition</button>
+
+    <form id="uploadForm" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)" aria-hidden="true">
+      <input type="text" name="name" placeholder="Your Full Name" required aria-required="true" />
+      <input type="email" name="email" placeholder="Your Email Address" required aria-required="true" />
+      <textarea name="details" placeholder="Brief details of how you were scammed..." required aria-required="true"></textarea>
+      <input type="file" name="attachments" multiple accept=".pdf,image/*" />
+      <input type="hidden" name="company" id="selectedCompany" />
+      <button type="submit">Send New Petition</button>
+    </form>
+
+    <div id="confirmationMessage" role="alert" aria-live="assertive">
+      Thank you for sending your new Petition against the company you have an issue with. <br />
+      The petition will be made live on the website within 24 hours to warn others.
+    </div>
+
+    <div id="pdfContent" aria-live="polite" aria-atomic="true" style="margin-top: 20px;">
+      <!-- PDF iframe or embed goes here -->
+    </div>
   </div>
 
   <footer>
@@ -282,115 +255,116 @@
   </footer>
 
   <script>
+    // Sample data - replace with real data or API call
+    const companies = [
+      { name: "Sujimoto", petitionPDF: "https://example.com/petitions/sujimoto.pdf" },
+      { name: "PWAN", petitionPDF: "https://example.com/petitions/pwan.pdf" },
+      { name: "Real Estate Scam Ltd", petitionPDF: "https://example.com/petitions/realescamltd.pdf" },
+      { name: "Rogue Builders", petitionPDF: "https://example.com/petitions/roguebuilders.pdf" },
+    ];
+
     const searchBox = document.getElementById("searchBox");
     const resultsList = document.getElementById("results");
     const pdfViewerContainer = document.getElementById("pdfViewerContainer");
     const pdfContent = document.getElementById("pdfContent");
     const uploadForm = document.getElementById("uploadForm");
-    const selectedCompanyInput = document.getElementById("selectedCompany");
     const confirmationMessage = document.getElementById("confirmationMessage");
-    const uploadToggleBtn = pdfViewerContainer.querySelector("button.green-button");
+    const selectedCompanyInput = document.getElementById("selectedCompany");
+    const uploadFormButton = pdfViewerContainer.querySelector("button.green-button");
 
-    let companies = [];
-
-    // Load company data
-    fetch('data/companies.json')
-      .then(res => res.json())
-      .then(data => companies = data)
-      .catch(() => {
-        companies = [];
-        alert("Failed to load company data.");
-      });
-
-    // Search companies dynamically
-    searchBox.addEventListener('input', () => {
+    // Search filter function
+    searchBox.addEventListener("input", () => {
       const query = searchBox.value.trim().toLowerCase();
-      resultsList.innerHTML = '';
-      if (!query) return;
+      resultsList.innerHTML = "";
+      if (query.length === 0) return;
 
       const filtered = companies.filter(c => c.name.toLowerCase().includes(query));
       if (filtered.length === 0) {
-        const li = document.createElement('li');
-        li.textContent = "No companies found";
-        li.style.cursor = 'default';
-        resultsList.appendChild(li);
+        resultsList.innerHTML = '<li>No companies found.</li>';
         return;
       }
 
       filtered.forEach(company => {
-        const li = document.createElement('li');
+        const li = document.createElement("li");
         li.textContent = company.name;
-        li.tabIndex = 0;
-        li.onclick = () => showPetitions(company);
-        li.onkeypress = e => { if (e.key === "Enter") showPetitions(company); };
+        li.tabIndex = 0;  // make focusable
+        li.setAttribute("role", "button");
+        li.setAttribute("aria-pressed", "false");
+        li.onclick = () => openPetition(company);
+        li.onkeydown = e => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openPetition(company);
+          }
+        };
         resultsList.appendChild(li);
       });
     });
 
-    function showPetitions(company) {
+    // Open petition viewer for company
+    function openPetition(company) {
       selectedCompanyInput.value = company.name;
-      pdfViewerContainer.classList.add("active");
-      pdfContent.innerHTML = `<h2 id="pdfViewerTitle">${company.heading}</h2>`;
-      if (!company.petitions || company.petitions.length === 0) {
-        pdfContent.innerHTML += "<p>No petitions available for this company yet.</p>";
-      } else {
-        company.petitions.forEach(petition => {
-          const p = document.createElement('p');
-          p.innerHTML = `<strong>${petition.title}</strong>`;
-          const viewBtn = document.createElement('button');
-          viewBtn.textContent = "View PDF";
-          viewBtn.onclick = () => window.open(petition.file, '_blank');
-          const downloadBtn = document.createElement('button');
-          downloadBtn.textContent = "Download PDF";
-          downloadBtn.onclick = () => {
-            const a = document.createElement('a');
-            a.href = petition.file;
-            a.download = '';
-            a.click();
-          };
-          pdfContent.appendChild(p);
-          pdfContent.appendChild(viewBtn);
-          pdfContent.appendChild(downloadBtn);
-        });
-      }
-      // Reset upload form and confirmation
+      pdfViewerContainer.style.display = "block";
       uploadForm.style.display = "none";
       confirmationMessage.style.display = "none";
-      uploadToggleBtn.setAttribute('aria-expanded', 'false');
-    }
+      uploadForm.setAttribute("aria-hidden", "true");
+      uploadFormButton.setAttribute("aria-expanded", "false");
 
-    function closeViewer() {
-      pdfViewerContainer.classList.remove("active");
-      pdfContent.innerHTML = '';
-      uploadForm.style.display = "none";
-      confirmationMessage.style.display = "none";
-      searchBox.value = "";
+      // Embed PDF (or simulate)
+      pdfContent.innerHTML = `
+        <h2 id="pdfViewerTitle">${company.name} Petition</h2>
+        <iframe src="${company.petitionPDF}" width="100%" height="600px" aria-describedby="pdfContentDesc"></iframe>
+      `;
+
       resultsList.innerHTML = "";
-      uploadToggleBtn.setAttribute('aria-expanded', 'false');
+      searchBox.value = "";
+      searchBox.focus();
     }
 
+    // Close petition viewer
+    function closeViewer() {
+      pdfViewerContainer.style.display = "none";
+      pdfContent.innerHTML = "";
+      uploadForm.style.display = "none";
+      confirmationMessage.style.display = "none";
+      uploadForm.setAttribute("aria-hidden", "true");
+      uploadFormButton.setAttribute("aria-expanded", "false");
+    }
+
+    // Toggle the upload petition form
     function toggleUploadForm() {
-      const isHidden = uploadForm.style.display === "none";
-      uploadForm.style.display = isHidden ? "block" : "none";
-      confirmationMessage.style.display = "none";
-      uploadToggleBtn.setAttribute('aria-expanded', isHidden.toString());
+      const isVisible = uploadForm.style.display === "block";
+      if (isVisible) {
+        uploadForm.style.display = "none";
+        confirmationMessage.style.display = "none";
+        uploadForm.setAttribute("aria-hidden", "true");
+        uploadFormButton.setAttribute("aria-expanded", "false");
+      } else {
+        uploadForm.style.display = "block";
+        confirmationMessage.style.display = "none";
+        uploadForm.setAttribute("aria-hidden", "false");
+        uploadFormButton.setAttribute("aria-expanded", "true");
+      }
     }
 
-    uploadForm.addEventListener('submit', async e => {
-      e.preventDefault();
-      confirmationMessage.style.display = "none";
+    // Handle petition form submission
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      // For demo: Just show confirmation and reset form
+      confirmationMessage.style.display = "block";
+      uploadForm.style.display = "none";
+      uploadForm.setAttribute("aria-hidden", "true");
+      uploadFormButton.setAttribute("aria-expanded", "false");
+      uploadForm.reset();
 
-      const formData = new FormData(uploadForm);
-      try {
-        // Simulate upload to backend - replace with real API call
-        await new Promise(res => setTimeout(res, 1500));
+      // TODO: Implement actual submission (e.g., send to backend or email)
+      alert("Petition sent! The company petition will be live within 24 hours.");
+    }
 
-        uploadForm.reset();
-        uploadForm.style.display = "none";
-        confirmationMessage.style.display = "block";
-        uploadToggleBtn.setAttribute('aria-expanded', 'false');
-      } catch (err) {
-        alert("Error submitting petition. Please try again.");
+    // Accessibility: Close viewer on Escape key
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && pdfViewerContainer.style.display === "block") {
+        closeViewer();
       }
     });
   </script>
