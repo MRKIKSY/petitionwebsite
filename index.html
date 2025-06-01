@@ -3,107 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nigeria Scam Allegations Companies Database</title>
+  <title>Fraudulent Allegations Companies Database</title>
   <style>
-    /* Global Styles */
     body {
       font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      margin: 0;
       padding: 20px;
-      color: #333;
-      line-height: 1.5;
+      background: #eee;
     }
-
     .container {
       background: white;
-      max-width: 800px;
+      padding: 20px;
+      max-width: 600px;
       margin: 0 auto;
-      padding: 25px 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      box-sizing: border-box;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
     h1 {
       color: #d32f2f;
-      font-weight: 700;
-      margin-bottom: 5px;
       text-align: center;
     }
-
-    h2.subheading {
-      color: #555555;
-      font-weight: 500;
-      margin-top: 0;
-      margin-bottom: 25px;
-      text-align: center;
-      font-style: italic;
-      font-size: 1.3rem;
-    }
-
     #searchBox {
       width: 100%;
-      padding: 12px 15px;
+      padding: 12px;
       font-size: 16px;
-      border: 1.5px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      box-sizing: border-box;
-      transition: border-color 0.3s ease;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
     }
-
-    #searchBox:focus {
-      border-color: #d32f2f;
-      outline: none;
-      box-shadow: 0 0 6px #d32f2f66;
-    }
-
-    .info-section {
-      background-color: #f5f5f5;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 25px 30px;
-      margin-bottom: 30px;
-      color: #333;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .info-section p {
-      margin: 0 0 1em 0;
-    }
-
-    .info-section strong {
-      color: #d32f2f;
-    }
-
-    .info-section a {
-      color: #d32f2f;
-      text-decoration: underline;
-    }
-
     #results {
       list-style: none;
       padding: 0;
-      margin: 0 0 30px 0;
+      margin: 0;
       border: 1px solid #ccc;
-      border-radius: 8px;
+      border-radius: 6px;
       background: #fafafa;
       max-height: 200px;
       overflow-y: auto;
     }
-
     #results li {
-      padding: 10px 15px;
+      padding: 10px;
       border-bottom: 1px solid #ddd;
       cursor: pointer;
     }
-
     #results li:hover {
       background-color: #f0f0f0;
     }
-
+    .hidden {
+      display: none;
+    }
     #pdfViewerContainer {
       position: fixed;
       top: 0; left: 0;
@@ -113,9 +60,7 @@
       z-index: 1000;
       overflow-y: auto;
       padding: 20px 20px 80px 20px;
-      box-sizing: border-box;
     }
-
     #pdfViewerContainer button {
       margin: 10px 5px;
       padding: 10px 20px;
@@ -125,10 +70,9 @@
       border-radius: 6px;
       cursor: pointer;
     }
-
     .green-button {
-      background-color: green !important;
-    }
+  background-color: green !important;
+}
 
     #uploadForm {
       margin-top: 20px;
@@ -136,28 +80,18 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       background: #f9f9f9;
-      display: block;
     }
-
     #uploadForm textarea {
       width: 100%;
       height: 60px;
       padding: 10px;
-      margin-bottom: 10px;
-      resize: vertical;
-      font-size: 14px;
     }
-
     #uploadForm input[type="file"],
-    #uploadForm input[type="text"],
-    #uploadForm input[type="email"] {
+    #uploadForm input[type="text"] {
       margin: 10px 0;
       width: 100%;
       padding: 8px;
-      font-size: 14px;
-      box-sizing: border-box;
     }
-
     #uploadForm button {
       background: green;
       color: white;
@@ -166,9 +100,7 @@
       border-radius: 6px;
       cursor: pointer;
       margin-bottom: 10px;
-      font-size: 16px;
     }
-
     #confirmationMessage {
       margin-top: 20px;
       padding: 15px;
@@ -178,57 +110,42 @@
       font-weight: bold;
       text-align: center;
       display: none;
-      font-size: 1rem;
-    }
-
-    .hidden {
-      display: none !important;
     }
   </style>
 </head>
 <body>
-  <div class="container" role="main">
-    <h1>Nigeria Scam Allegations Companies Database</h1>
-    <h2 class="subheading">Empowering the public by exposing fraudulent real estate companies</h2>
+  <div class="container">
+    <h1> Nigeria Scam Allegations Companies Database</h1>
+    <input type="text" id="searchBox" placeholder="Search company..Sujimoto..Pwan" />
+    <ul id="results"></ul>
 
-    <input type="text" id="searchBox" placeholder="Search company... e.g., Sujimoto, PWAN" aria-label="Search company" />
+    <div id="pdfViewerContainer" class="hidden">
+      <button onclick="closeViewer()">Close</button>
+     <button class="green-button" onclick="toggleUploadForm()">Submit a New Petition</button>
 
-    <div class="info-section" aria-label="Mission statement">
-      <p>Our mission is to provide a transparent, community-driven platform that establishes and displays live petitions against rogue companies alleged to have defrauded individuals. By sharing verified evidence and petitions here, we help warn the public and promote accountability.</p>
-    </div>
 
-    <div class="info-section" aria-label="Important scam information">
-      <p><strong>Have you been scammed by a Real Estate Company in Lagos?</strong><br />
-      Send your evidence of payment to <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>. A <strong>PETITION</strong> to EFCC will be automatically created for you, and the company name and petition will be made live on this website to <strong>WARN</strong> others.</p>
+      <!-- Moved the form to the top of the viewer -->
+      <form id="uploadForm" class="hidden" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
+       
+        <form id="uploadForm" class="hidden" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
+  <input type="text" name="name" placeholder="Your Full Name" required />
+  <input type="email" name="email" placeholder="Your Email Address" required />
+  <textarea name="details" placeholder="Brief details of how you were scammed..." required></textarea>
+  <input type="file" name="attachments" multiple accept=".pdf,image/*" />
+  <input type="hidden" name="company" id="selectedCompany" />
+  <button type="submit">Send New Petition</button>
+</form>
 
-      <p><strong>Does your Company appear on this list?</strong><br />
-      To get your company name removed from this database, contact <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>, providing evidence that you have <strong>SUFFICIENTLY</strong> clarified and paid out the fraudulent allegations against your company. Once the petitioner <strong>CONFIRMS</strong> receipt, your company will be removed from the database within 24 hours.</p>
-    </div>
-
-    <ul id="results" role="list" aria-label="Search results"></ul>
-
-    <div id="pdfViewerContainer" role="dialog" aria-modal="true" class="hidden">
-      <button onclick="closeViewer()" aria-label="Close petition viewer">Close</button>
-      <button class="green-button" onclick="toggleUploadForm()" aria-controls="uploadForm">Submit a New Petition</button>
-
-      <form id="uploadForm" enctype="multipart/form-data" class="hidden">
-        <input type="text" name="name" placeholder="Your Full Name" required />
-        <input type="email" name="email" placeholder="Your Email Address" required />
-        <textarea name="details" placeholder="Brief details of how you were scammed..." required></textarea>
-        <input type="file" name="attachments" multiple accept=".pdf,image/*" />
-        <input type="hidden" name="company" id="selectedCompany" />
-        <button type="submit">Send New Petition</button>
       </form>
 
-      <div id="confirmationMessage" role="alert">
+      <div id="confirmationMessage">
         Thank you for sending your new Petition against the company you have an issue with. <br />
         The petition will be made live on the website within 24 hours to warn others.
       </div>
 
-      <div id="pdfContent" style="margin-top: 20px;"></div>
+      <div id="pdfContent"></div>
     </div>
   </div>
-
   <script>
     const searchBox = document.getElementById("searchBox");
     const resultsList = document.getElementById("results");
@@ -236,7 +153,6 @@
     const pdfContent = document.getElementById("pdfContent");
     const uploadForm = document.getElementById("uploadForm");
     const selectedCompanyInput = document.getElementById("selectedCompany");
-    const confirmationMessage = document.getElementById("confirmationMessage");
 
     let companies = [];
 
@@ -249,29 +165,24 @@
       resultsList.innerHTML = '';
       if (!query) return;
 
-      companies
-        .filter(c => c.name.toLowerCase().includes(query))
-        .forEach(company => {
-          const li = document.createElement('li');
-          li.textContent = company.name;
-          li.onclick = () => showPetitions(company);
-          resultsList.appendChild(li);
-        });
+      companies.filter(c => c.name.toLowerCase().includes(query)).forEach(company => {
+        const li = document.createElement('li');
+        li.textContent = company.name;
+        li.onclick = () => showPetitions(company);
+        resultsList.appendChild(li);
+      });
     });
 
     function showPetitions(company) {
       selectedCompanyInput.value = company.name;
       pdfViewerContainer.classList.remove("hidden");
-      pdfContent.innerHTML = `<h2>${company.heading}</h2>`;
-
+      pdfContent.innerHTML = <h2>${company.heading}</h2>;
       company.petitions.forEach(petition => {
         const label = document.createElement('p');
-        label.innerHTML = `<strong>${petition.title}</strong>`;
-
+        label.innerHTML = <strong>${petition.title}</strong>;
         const viewBtn = document.createElement('button');
         viewBtn.textContent = "View PDF";
         viewBtn.onclick = () => window.open(petition.file, '_blank');
-
         const downloadBtn = document.createElement('button');
         downloadBtn.textContent = "Download PDF";
         downloadBtn.onclick = () => {
@@ -280,7 +191,6 @@
           a.download = '';
           a.click();
         };
-
         pdfContent.appendChild(label);
         pdfContent.appendChild(viewBtn);
         pdfContent.appendChild(downloadBtn);
@@ -297,27 +207,33 @@
       uploadForm.classList.toggle("hidden");
     }
 
-    uploadForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(uploadForm);
+   uploadForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = new FormData(uploadForm);
 
-      const response = await fetch('https://petitionwebsite.onrender.com/submit', {
-        method: 'POST',
-        body: formData,
-      });
+  const response = await fetch('https://petitionwebsite.onrender.com/submit', {
+    method: 'POST',
+    body: formData,
+  });
 
-      if (response.ok) {
-        uploadForm.reset();
-        uploadForm.classList.add("hidden");
+ if (response.ok) {
+  uploadForm.reset();
+  uploadForm.classList.add("hidden");
 
-        confirmationMessage.style.display = "block";
-        setTimeout(() => {
-          confirmationMessage.style.display = "none";
-        }, 5000);
-      } else {
-        alert('Failed to submit petition.');
-      }
-    });
+  // Show confirmation message
+  const confirmationMessage = document.getElementById("confirmationMessage");
+  confirmationMessage.style.display = "block";
+
+  // Optionally auto-hide after 5 seconds
+  setTimeout(() => {
+    confirmationMessage.style.display = "none";
+  }, 5000);
+} else {
+  alert('Failed to submit petition.');
+}
+
+});
+
   </script>
 </body>
 </html>
