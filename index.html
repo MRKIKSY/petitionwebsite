@@ -270,11 +270,12 @@
       font-family: Arial, sans-serif;
       padding: 20px;
       background: #eee;
+      margin: 0;
     }
     .container {
       background: white;
       padding: 20px;
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -374,44 +375,30 @@
     }
     section {
       margin-top: 30px;
-      background-color: #fffde7;
-      padding: 20px;
+      background: #fffbea;
+      padding: 15px;
       border-radius: 8px;
-      border: 1px solid #fbc02d;
+      border: 1px solid #f4e5b7;
+    }
+    footer {
+      margin-top: 40px;
+      background-color: #f5f5f5;
+      padding: 30px 20px;
+      font-size: 14px;
+      color: #333;
+      border-top: 1px solid #ddd;
+    }
+    footer a {
+      color: #d32f2f;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Nigeria Scam Allegations Companies Database</h1>
-    <input type="text" id="searchBox" placeholder="Search company.. e.g. Sujimoto, Pwan" />
+    <input type="text" id="searchBox" placeholder="Search company... Sujimoto, PWAN, etc." />
     <ul id="results"></ul>
-
-    <section>
-      <h3>Platform Purpose & Mission</h3>
-      <p>
-        This platform exists to give individuals a voice to report fraudulent companies operating in Nigeria. Our goal is to build a transparent, public record of petitions submitted against companies — starting with real estate scams in Lagos — so that others can be warned and protected.
-      </p>
-      <p>
-        We aim to collect verified claims from victims and make them publicly accessible. Each report is paired with downloadable or viewable petition evidence. Companies listed can clear their name by resolving allegations and reaching out for removal.
-      </p>
-    </section>
-
-    <section>
-      <p><strong>Have you been scammed by a Real Estate Company in Lagos?</strong><br />
-        Send your evidence of payment to 
-        <a href="https://wa.me/2347077513836" target="_blank" style="color: red; text-decoration: underline; font-weight: bold;">
-          ADMIN
-        </a>. A <strong>PETITION</strong> to EFCC would be automatically created for you, and the company name and petition would be live on this website to <strong>WARN</strong> others.
-      </p>
-
-      <p><strong>Does your Company appear on this list?</strong><br />
-        To get your company name removed from this database, contact 
-        <a href="https://wa.me/2347077513836" target="_blank" style="color: red; text-decoration: underline; font-weight: bold;">
-          ADMIN
-        </a>, providing evidence that you have <strong>SUFFICIENTLY</strong> clarified and paid out the fraudulent allegations against your company. Once the petitioner <strong>CONFIRMS</strong> receipt, your company will be removed from the database within 24 hours.
-      </p>
-    </section>
 
     <div id="pdfViewerContainer" class="hidden">
       <button onclick="closeViewer()">Close</button>
@@ -427,12 +414,39 @@
       </form>
 
       <div id="confirmationMessage">
-        Thank you for sending your new Petition against the company you have an issue with. <br />
-        The petition will be made live on the website within 24 hours to warn others.
+        Thank you for sending your new petition. It will be reviewed and go live within 24 hours to warn others.
       </div>
 
       <div id="pdfContent"></div>
     </div>
+
+    <section>
+      <p><strong>Have you been scammed by a Real Estate Company in Lagos?</strong><br />
+        Send your evidence of payment to 
+        <a href="https://wa.me/2347077513836" target="_blank">ADMIN</a>. A <strong>PETITION</strong> to EFCC will be automatically created for you, and the company name and petition will be made live on this website to <strong>WARN</strong> others.
+      </p>
+
+      <p><strong>Does your Company appear on this list?</strong><br />
+        To get your company name removed from this database, contact 
+        <a href="https://wa.me/2347077513836" target="_blank">ADMIN</a>, providing evidence that you have <strong>SUFFICIENTLY</strong> clarified and paid out the fraudulent allegations against your company. Once the petitioner <strong>CONFIRMS</strong> receipt, your company will be removed from the database within 24 hours.
+      </p>
+    </section>
+
+    <footer>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <p style="font-weight: bold;">© 2025, Nigeria Scam Allegations Petition Platform</p>
+        <p><a href="#">Data Privacy Policy</a></p>
+        <h4 style="margin-top: 20px; font-size: 16px;">CONTACT US</h4>
+        <p>
+          PETITIONS HUB<br />
+          Plot 123, Transparency Crescent, Central Business District<br />
+          P.M.B: 101, Garki, Abuja<br />
+          Phone: +234-812-345-6789<br />
+          Mobile/Whatsapp: <a href="https://wa.me/2347077513836" target="_blank">+234 707 751 3836</a><br />
+          Email: <a href="mailto:contact@petitionhub.ng">contact@petitionhub.ng</a>
+        </p>
+      </div>
+    </footer>
   </div>
 
   <script>
@@ -508,10 +522,9 @@
       if (response.ok) {
         uploadForm.reset();
         uploadForm.classList.add("hidden");
-        const confirmationMessage = document.getElementById("confirmationMessage");
-        confirmationMessage.style.display = "block";
+        document.getElementById("confirmationMessage").style.display = "block";
         setTimeout(() => {
-          confirmationMessage.style.display = "none";
+          document.getElementById("confirmationMessage").style.display = "none";
         }, 5000);
       } else {
         alert('Failed to submit petition.');
@@ -520,3 +533,4 @@
   </script>
 </body>
 </html>
+
