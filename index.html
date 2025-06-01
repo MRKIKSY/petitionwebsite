@@ -31,7 +31,7 @@
       margin-bottom: 5px;
       text-align: center;
     }
-    /* New subheading style */
+
     h2.subheading {
       color: #555555;
       font-weight: 500;
@@ -42,7 +42,6 @@
       font-size: 1.3rem;
     }
 
-    /* Search Input */
     #searchBox {
       width: 100%;
       padding: 12px 15px;
@@ -53,13 +52,13 @@
       box-sizing: border-box;
       transition: border-color 0.3s ease;
     }
+
     #searchBox:focus {
       border-color: #d32f2f;
       outline: none;
       box-shadow: 0 0 6px #d32f2f66;
     }
 
-    /* Mission and Info Sections */
     .info-section {
       background-color: #f5f5f5;
       border: 1px solid #ddd;
@@ -70,18 +69,20 @@
       font-size: 1rem;
       line-height: 1.5;
     }
+
     .info-section p {
       margin: 0 0 1em 0;
     }
+
     .info-section strong {
       color: #d32f2f;
     }
+
     .info-section a {
       color: #d32f2f;
       text-decoration: underline;
     }
 
-    /* Results list */
     #results {
       list-style: none;
       padding: 0;
@@ -92,16 +93,17 @@
       max-height: 200px;
       overflow-y: auto;
     }
+
     #results li {
       padding: 10px 15px;
       border-bottom: 1px solid #ddd;
       cursor: pointer;
     }
+
     #results li:hover {
       background-color: #f0f0f0;
     }
 
-    /* PDF Viewer Container */
     #pdfViewerContainer {
       position: fixed;
       top: 0; left: 0;
@@ -113,6 +115,7 @@
       padding: 20px 20px 80px 20px;
       box-sizing: border-box;
     }
+
     #pdfViewerContainer button {
       margin: 10px 5px;
       padding: 10px 20px;
@@ -122,11 +125,11 @@
       border-radius: 6px;
       cursor: pointer;
     }
+
     .green-button {
       background-color: green !important;
     }
 
-    /* Upload Form */
     #uploadForm {
       margin-top: 20px;
       padding: 15px;
@@ -135,6 +138,7 @@
       background: #f9f9f9;
       display: block;
     }
+
     #uploadForm textarea {
       width: 100%;
       height: 60px;
@@ -143,6 +147,7 @@
       resize: vertical;
       font-size: 14px;
     }
+
     #uploadForm input[type="file"],
     #uploadForm input[type="text"],
     #uploadForm input[type="email"] {
@@ -152,6 +157,7 @@
       font-size: 14px;
       box-sizing: border-box;
     }
+
     #uploadForm button {
       background: green;
       color: white;
@@ -175,7 +181,6 @@
       font-size: 1rem;
     }
 
-    /* Hidden class for toggling visibility */
     .hidden {
       display: none !important;
     }
@@ -202,30 +207,26 @@
 
     <ul id="results" role="list" aria-label="Search results"></ul>
 
-    <!-- PDF Viewer and Petition Form -->
-    <div id="pdfViewerContainer" role="dialog" aria-modal="true" aria-labelledby="pdfViewerTitle" aria-describedby="pdfContentDesc" class="hidden">
+    <div id="pdfViewerContainer" role="dialog" aria-modal="true" class="hidden">
       <button onclick="closeViewer()" aria-label="Close petition viewer">Close</button>
-      <button class="green-button" onclick="toggleUploadForm()" aria-expanded="false" aria-controls="uploadForm">Submit a New Petition</button>
+      <button class="green-button" onclick="toggleUploadForm()" aria-controls="uploadForm">Submit a New Petition</button>
 
-      <form id="uploadForm" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)" aria-hidden="true" class="hidden">
-        <input type="text" name="name" placeholder="Your Full Name" required aria-required="true" />
-        <input type="email" name="email" placeholder="Your Email Address" required aria-required="true" />
-        <textarea name="details" placeholder="Brief details of how you were scammed..." required aria-required="true"></textarea>
+      <form id="uploadForm" enctype="multipart/form-data" class="hidden">
+        <input type="text" name="name" placeholder="Your Full Name" required />
+        <input type="email" name="email" placeholder="Your Email Address" required />
+        <textarea name="details" placeholder="Brief details of how you were scammed..." required></textarea>
         <input type="file" name="attachments" multiple accept=".pdf,image/*" />
         <input type="hidden" name="company" id="selectedCompany" />
         <button type="submit">Send New Petition</button>
       </form>
 
-      <div id="confirmationMessage" role="alert" aria-live="assertive">
+      <div id="confirmationMessage" role="alert">
         Thank you for sending your new Petition against the company you have an issue with. <br />
         The petition will be made live on the website within 24 hours to warn others.
       </div>
 
-      <div id="pdfContent" aria-live="polite" aria-atomic="true" style="margin-top: 20px;">
-        <!-- PDF iframe or embed goes here -->
-      </div>
+      <div id="pdfContent" style="margin-top: 20px;"></div>
     </div>
-
   </div>
 
   <script>
@@ -235,82 +236,88 @@
     const pdfContent = document.getElementById("pdfContent");
     const uploadForm = document.getElementById("uploadForm");
     const selectedCompanyInput = document.getElementById("selectedCompany");
+    const confirmationMessage = document.getElementById("confirmationMessage");
 
     let companies = [];
 
-    // Load companies data (ensure this path and data structure is correct)
     fetch('data/companies.json')
       .then(res => res.json())
-      .then(data => companies = data)
-      .catch(err => console.error('Failed to load companies data:', err));
+      .then(data => companies = data);
 
     searchBox.addEventListener('input', () => {
       const query = searchBox.value.toLowerCase();
       resultsList.innerHTML = '';
       if (!query) return;
 
-      companies.filter(c => c.name.toLowerCase().includes(query)).forEach(company => {
-        const li = document.createElement('li');
-        li.textContent = company.name;
-        li.onclick = () => showPetitions(company);
-        resultsList.appendChild(li);
-      });
+      companies
+        .filter(c => c.name.toLowerCase().includes(query))
+        .forEach(company => {
+          const li = document.createElement('li');
+          li.textContent = company.name;
+          li.onclick = () => showPetitions(company);
+          resultsList.appendChild(li);
+        });
     });
 
     function showPetitions(company) {
       selectedCompanyInput.value = company.name;
       pdfViewerContainer.classList.remove("hidden");
-      uploadForm.classList.add("hidden");
-      pdfContent.innerHTML = `<h2>${company.heading || company.name}</h2>`;
+      pdfContent.innerHTML = `<h2>${company.heading}</h2>`;
+
       company.petitions.forEach(petition => {
         const label = document.createElement('p');
         label.innerHTML = `<strong>${petition.title}</strong>`;
+
         const viewBtn = document.createElement('button');
-        viewBtn.textContent = "View";
-        viewBtn.style.marginBottom = '15px';
-        viewBtn.onclick = () => {
-          pdfContent.innerHTML = `<iframe src="${petition.pdf}" style="width:100%;height:600px;border:none;" aria-label="Petition document"></iframe>`;
+        viewBtn.textContent = "View PDF";
+        viewBtn.onclick = () => window.open(petition.file, '_blank');
+
+        const downloadBtn = document.createElement('button');
+        downloadBtn.textContent = "Download PDF";
+        downloadBtn.onclick = () => {
+          const a = document.createElement('a');
+          a.href = petition.file;
+          a.download = '';
+          a.click();
         };
+
         pdfContent.appendChild(label);
         pdfContent.appendChild(viewBtn);
+        pdfContent.appendChild(downloadBtn);
       });
-      resultsList.innerHTML = '';
-      searchBox.value = '';
-      searchBox.focus();
     }
 
     function closeViewer() {
       pdfViewerContainer.classList.add("hidden");
-      uploadForm.classList.add("hidden");
       pdfContent.innerHTML = '';
-      document.getElementById("confirmationMessage").style.display = "none";
-      selectedCompanyInput.value = '';
-      searchBox.focus();
+      uploadForm.classList.add("hidden");
     }
 
     function toggleUploadForm() {
-      const isHidden = uploadForm.classList.toggle("hidden");
-      uploadForm.setAttribute('aria-hidden', isHidden);
-      if (!isHidden) {
-        uploadForm.querySelector('input[name="name"]').focus();
-      }
-      // Update aria-expanded of button
-      const btn = pdfViewerContainer.querySelector(".green-button");
-      btn.setAttribute('aria-expanded', !isHidden);
+      uploadForm.classList.toggle("hidden");
     }
 
-    function handleFormSubmit(e) {
+    uploadForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(uploadForm);
 
-      // Simulate sending form data (replace with real API call)
-      console.log('Form data submitted:', Object.fromEntries(formData.entries()));
+      const response = await fetch('https://petitionwebsite.onrender.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
 
-      // Reset form and show confirmation
-      uploadForm.reset();
-      uploadForm.classList.add("hidden");
-      document.getElementById("confirmationMessage").style.display = "block";
-    }
+      if (response.ok) {
+        uploadForm.reset();
+        uploadForm.classList.add("hidden");
+
+        confirmationMessage.style.display = "block";
+        setTimeout(() => {
+          confirmationMessage.style.display = "none";
+        }, 5000);
+      } else {
+        alert('Failed to submit petition.');
+      }
+    });
   </script>
 </body>
 </html>
