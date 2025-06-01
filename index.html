@@ -166,37 +166,37 @@
       font-size: 1rem;
     }
 
-    /* Footer */
-    footer {
+    /* Footer inside container */
+    .footer-content {
       background-color: #f5f5f5;
-      padding: 35px 30px;
+      padding: 25px 30px;
       font-size: 14px;
       color: #333;
       border-top: 1px solid #ddd;
-      max-width: 800px;
-      margin: 40px auto 0 auto;
+      margin-top: 40px;
       border-radius: 0 0 10px 10px;
-      box-sizing: border-box;
       line-height: 1.5;
       text-align: center;
     }
-    footer p {
+    .footer-content p {
       margin: 6px 0;
     }
-    footer a {
+    .footer-content a {
       color: #d32f2f;
       text-decoration: underline;
     }
-    footer h4 {
+    .footer-content strong {
+      font-weight: bold;
+    }
+    .footer-content h4 {
       margin-top: 25px;
       font-size: 16px;
       font-weight: 700;
     }
-
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container" role="main">
     <h1>Nigeria Scam Allegations Companies Database</h1>
 
     <input type="text" id="searchBox" placeholder="Search company... e.g., Sujimoto, PWAN" aria-label="Search company" />
@@ -214,45 +214,46 @@
     </div>
 
     <ul id="results" role="list" aria-label="Search results"></ul>
-  </div>
 
-  <!-- PDF Viewer and Petition Form -->
-  <div id="pdfViewerContainer" role="dialog" aria-modal="true" aria-labelledby="pdfViewerTitle" aria-describedby="pdfContentDesc">
-    <button onclick="closeViewer()" aria-label="Close petition viewer">Close</button>
-    <button class="green-button" onclick="toggleUploadForm()" aria-expanded="false" aria-controls="uploadForm">Submit a New Petition</button>
+    <!-- PDF Viewer and Petition Form -->
+    <div id="pdfViewerContainer" role="dialog" aria-modal="true" aria-labelledby="pdfViewerTitle" aria-describedby="pdfContentDesc">
+      <button onclick="closeViewer()" aria-label="Close petition viewer">Close</button>
+      <button class="green-button" onclick="toggleUploadForm()" aria-expanded="false" aria-controls="uploadForm">Submit a New Petition</button>
 
-    <form id="uploadForm" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)" aria-hidden="true">
-      <input type="text" name="name" placeholder="Your Full Name" required aria-required="true" />
-      <input type="email" name="email" placeholder="Your Email Address" required aria-required="true" />
-      <textarea name="details" placeholder="Brief details of how you were scammed..." required aria-required="true"></textarea>
-      <input type="file" name="attachments" multiple accept=".pdf,image/*" />
-      <input type="hidden" name="company" id="selectedCompany" />
-      <button type="submit">Send New Petition</button>
-    </form>
+      <form id="uploadForm" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)" aria-hidden="true">
+        <input type="text" name="name" placeholder="Your Full Name" required aria-required="true" />
+        <input type="email" name="email" placeholder="Your Email Address" required aria-required="true" />
+        <textarea name="details" placeholder="Brief details of how you were scammed..." required aria-required="true"></textarea>
+        <input type="file" name="attachments" multiple accept=".pdf,image/*" />
+        <input type="hidden" name="company" id="selectedCompany" />
+        <button type="submit">Send New Petition</button>
+      </form>
 
-    <div id="confirmationMessage" role="alert" aria-live="assertive">
-      Thank you for sending your new Petition against the company you have an issue with. <br />
-      The petition will be made live on the website within 24 hours to warn others.
+      <div id="confirmationMessage" role="alert" aria-live="assertive">
+        Thank you for sending your new Petition against the company you have an issue with. <br />
+        The petition will be made live on the website within 24 hours to warn others.
+      </div>
+
+      <div id="pdfContent" aria-live="polite" aria-atomic="true" style="margin-top: 20px;">
+        <!-- PDF iframe or embed goes here -->
+      </div>
     </div>
 
-    <div id="pdfContent" aria-live="polite" aria-atomic="true" style="margin-top: 20px;">
-      <!-- PDF iframe or embed goes here -->
+    <!-- Footer content inside container -->
+    <div class="footer-content" role="contentinfo">
+      <p><strong>© 2025, Nigeria Scam Allegations Petition Platform</strong></p>
+      <p><a href="#">Data Privacy Policy</a></p>
+      <h4>CONTACT US</h4>
+      <p>
+        PETITIONS HUB<br />
+        Plot 123, Transparency Crescent, Central Business District<br />
+        P.M.B: 101, Garki, Abuja<br />
+        Phone: +234-812-345-6789<br />
+        Mobile/Whatsapp: <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">+234 707 751 3836</a><br />
+        Email: <a href="mailto:contact@petitionhub.ng">contact@petitionhub.ng</a>
+      </p>
     </div>
   </div>
-
-  <footer>
-    <p style="font-weight: bold;">© 2025, Nigeria Scam Allegations Petition Platform</p>
-    <p><a href="#">Data Privacy Policy</a></p>
-    <h4>CONTACT US</h4>
-    <p>
-      PETITIONS HUB<br />
-      Plot 123, Transparency Crescent, Central Business District<br />
-      P.M.B: 101, Garki, Abuja<br />
-      Phone: +234-812-345-6789<br />
-      Mobile/Whatsapp: <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">+234 707 751 3836</a><br />
-      Email: <a href="mailto:contact@petitionhub.ng">contact@petitionhub.ng</a>
-    </p>
-  </footer>
 
   <script>
     // Sample data - replace with real data or API call
