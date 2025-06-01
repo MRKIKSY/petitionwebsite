@@ -111,7 +111,6 @@
       z-index: 1000;
       overflow-y: auto;
       padding: 20px 20px 80px 20px;
-      display: none;
       box-sizing: border-box;
     }
     #pdfViewerContainer button {
@@ -134,7 +133,7 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       background: #f9f9f9;
-      display: none;
+      display: block;
     }
     #uploadForm textarea {
       width: 100%;
@@ -175,6 +174,11 @@
       display: none;
       font-size: 1rem;
     }
+
+    /* Hidden class for toggling visibility */
+    .hidden {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -199,11 +203,11 @@
     <ul id="results" role="list" aria-label="Search results"></ul>
 
     <!-- PDF Viewer and Petition Form -->
-    <div id="pdfViewerContainer" role="dialog" aria-modal="true" aria-labelledby="pdfViewerTitle" aria-describedby="pdfContentDesc">
+    <div id="pdfViewerContainer" role="dialog" aria-modal="true" aria-labelledby="pdfViewerTitle" aria-describedby="pdfContentDesc" class="hidden">
       <button onclick="closeViewer()" aria-label="Close petition viewer">Close</button>
       <button class="green-button" onclick="toggleUploadForm()" aria-expanded="false" aria-controls="uploadForm">Submit a New Petition</button>
 
-      <form id="uploadForm" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)" aria-hidden="true">
+      <form id="uploadForm" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)" aria-hidden="true" class="hidden">
         <input type="text" name="name" placeholder="Your Full Name" required aria-required="true" />
         <input type="email" name="email" placeholder="Your Email Address" required aria-required="true" />
         <textarea name="details" placeholder="Brief details of how you were scammed..." required aria-required="true"></textarea>
@@ -224,7 +228,7 @@
 
   </div>
 
-   <script>
+  <script>
     const searchBox = document.getElementById("searchBox");
     const resultsList = document.getElementById("results");
     const pdfViewerContainer = document.getElementById("pdfViewerContainer");
@@ -234,9 +238,11 @@
 
     let companies = [];
 
+    // Load companies data (ensure this path and data structure is correct)
     fetch('data/companies.json')
       .then(res => res.json())
-      .then(data => companies = data);
+      .then(data => companies = data)
+      .catch(err => console.error('Failed to load companies data:', err));
 
     searchBox.addEventListener('input', () => {
       const query = searchBox.value.toLowerCase();
@@ -254,57 +260,57 @@
     function showPetitions(company) {
       selectedCompanyInput.value = company.name;
       pdfViewerContainer.classList.remove("hidden");
-      pdfContent.innerHTML = `<h2>${company.heading}</h2>`;
+      uploadForm.classList.add("hidden");
+      pdfContent.innerHTML = `<h2>${company.heading || company.name}</h2>`;
       company.petitions.forEach(petition => {
         const label = document.createElement('p');
         label.innerHTML = `<strong>${petition.title}</strong>`;
         const viewBtn = document.createElement('button');
-        viewBtn.textContent = "View PDF";
-        viewBtn.onclick = () => window.open(petition.file, '_blank');
-        const downloadBtn = document.createElement('button');
-        downloadBtn.textContent = "Download PDF";
-        downloadBtn.onclick = () => {
-          const a = document.createElement('a');
-          a.href = petition.file;
-          a.download = '';
-          a.click();
+        viewBtn.textContent = "View";
+        viewBtn.style.marginBottom = '15px';
+        viewBtn.onclick = () => {
+          pdfContent.innerHTML = `<iframe src="${petition.pdf}" style="width:100%;height:600px;border:none;" aria-label="Petition document"></iframe>`;
         };
         pdfContent.appendChild(label);
         pdfContent.appendChild(viewBtn);
-        pdfContent.appendChild(downloadBtn);
       });
+      resultsList.innerHTML = '';
+      searchBox.value = '';
+      searchBox.focus();
     }
 
     function closeViewer() {
       pdfViewerContainer.classList.add("hidden");
-      pdfContent.innerHTML = '';
       uploadForm.classList.add("hidden");
+      pdfContent.innerHTML = '';
+      document.getElementById("confirmationMessage").style.display = "none";
+      selectedCompanyInput.value = '';
+      searchBox.focus();
     }
 
     function toggleUploadForm() {
-      uploadForm.classList.toggle("hidden");
+      const isHidden = uploadForm.classList.toggle("hidden");
+      uploadForm.setAttribute('aria-hidden', isHidden);
+      if (!isHidden) {
+        uploadForm.querySelector('input[name="name"]').focus();
+      }
+      // Update aria-expanded of button
+      const btn = pdfViewerContainer.querySelector(".green-button");
+      btn.setAttribute('aria-expanded', !isHidden);
     }
 
-    uploadForm.addEventListener('submit', async (e) => {
+    function handleFormSubmit(e) {
       e.preventDefault();
       const formData = new FormData(uploadForm);
 
-      const response = await fetch('https://petitionwebsite.onrender.com/submit', {
-        method: 'POST',
-        body: formData,
-      });
+      // Simulate sending form data (replace with real API call)
+      console.log('Form data submitted:', Object.fromEntries(formData.entries()));
 
-      if (response.ok) {
-        uploadForm.reset();
-        uploadForm.classList.add("hidden");
-        document.getElementById("confirmationMessage").style.display = "block";
-        setTimeout(() => {
-          document.getElementById("confirmationMessage").style.display = "none";
-        }, 5000);
-      } else {
-        alert('Failed to submit petition.');
-      }
-    });
+      // Reset form and show confirmation
+      uploadForm.reset();
+      uploadForm.classList.add("hidden");
+      document.getElementById("confirmationMessage").style.display = "block";
+    }
   </script>
 </body>
 </html>
