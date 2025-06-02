@@ -24,8 +24,8 @@
       margin-bottom: 5px;
     }
     h2.subheading {
-      color: #555;
-      font-weight: normal;
+      color: green;
+      font-weight: bold;
       text-align: center;
       font-size: 1.1rem;
       margin-bottom: 20px;
@@ -126,15 +126,38 @@
       text-align: center;
       display: none;
     }
+    footer {
+      background: #f0f0f0;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ccc;
+    }
+    footer p {
+      margin: 5px 0;
+    }
+    footer a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Nigeria Scam Allegations Companies Database</h1>
     <h2 class="subheading">A public petition archive to warn others and encourage accountability</h2>
-<input type="text" id="searchBox" placeholder="Search company..Sujimoto..Pwan" />
+
+    <input type="text" id="searchBox" placeholder="Search company..Sujimoto..Pwan" />
     <ul id="results"></ul>
+
+    <!-- About Us Section -->
     <div class="info-section" aria-label="Mission statement">
+      <h3 style="margin-top: 0; color: #444;">About Us</h3>
       <p>Our mission is to provide a transparent, community-driven platform that establishes and displays live petitions against rogue companies alleged to have defrauded individuals. By sharing verified evidence and petitions here, we help warn the public and promote accountability.</p>
     </div>
 
@@ -145,8 +168,6 @@
       <p><strong>Does your Company appear on this list?</strong><br />
       To get your company name removed from this database, contact <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>, providing evidence that you have <strong>SUFFICIENTLY</strong> clarified and paid out the fraudulent allegations against your company. Once the petitioner <strong>CONFIRMS</strong> receipt, your company will be removed from the database within 24 hours.</p>
     </div>
-
-   
 
     <div id="pdfViewerContainer" class="hidden">
       <button onclick="closeViewer()">Close</button>
@@ -170,6 +191,16 @@
       <div id="pdfContent"></div>
     </div>
   </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; <span id="year"></span> Nigeria Scam Allegations Database. All rights reserved.</p>
+    <p>Built to protect and inform Nigerians about fraudulent companies.</p>
+    <p>For inquiries, email: <a href="mailto:scams@nigeriawatch.org">scams@nigeriawatch.org</a></p>
+    <p>WhatsApp support: <a href="https://wa.me/2347077513836" target="_blank">+234 707 751 3836</a></p>
+  </footer>
+
+ 
 
   <script>
     const searchBox = document.getElementById("searchBox");
