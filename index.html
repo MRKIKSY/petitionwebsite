@@ -30,12 +30,14 @@
       font-size: 1.1rem;
       margin-bottom: 20px;
     }
-    .info-section {
-      background: #fff3cd;
-      border-left: 6px solid #ffc107;
+    .blue-info {
+      background: #e3f2fd; /* footer's light blue */
+      border-left: 6px solid #42a5f5; /* footer's accent blue */
       padding: 15px;
       margin-bottom: 20px;
       border-radius: 5px;
+      color: #333;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
     }
     #searchBox {
       width: 100%;
@@ -127,31 +129,30 @@
       display: none;
     }
     footer {
-  background: #e3f2fd; /* modern light blue */
-  text-align: left;
-  padding: 20px;
-  margin-top: 40px;
-  font-size: 15px;
-  color: #333;
-  border-left: 6px solid #42a5f5; /* blue accent bar like warning section */
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.05);
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-footer p {
-  margin: 10px 0;
-}
-footer a {
-  color: #0277bd;
-  font-weight: bold;
-  text-decoration: none;
-}
-footer a:hover {
-  text-decoration: underline;
-}
-
+      background: #e3f2fd;
+      text-align: left;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 15px;
+      color: #333;
+      border-left: 6px solid #42a5f5;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    footer p {
+      margin: 10px 0;
+    }
+    footer a {
+      color: #0277bd;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -163,12 +164,13 @@ footer a:hover {
     <ul id="results"></ul>
 
     <!-- About Us Section -->
-    <div class="info-section" aria-label="Mission statement">
+    <div class="blue-info" aria-label="Mission statement">
       <h3 style="margin-top: 0; color: #444;">About Us</h3>
       <p>Our mission is to provide a transparent, community-driven platform that establishes and displays live petitions against rogue companies alleged to have defrauded individuals. By sharing verified evidence and petitions here, we help warn the public and promote accountability.</p>
     </div>
 
-    <div class="info-section" aria-label="Important scam information">
+    <!-- Scam Info Section -->
+    <div class="blue-info" aria-label="Important scam information">
       <p><strong>Have you been scammed by a Real Estate Company in Lagos?</strong><br />
       Send your evidence of payment to <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>. A <strong>PETITION</strong> to EFCC will be automatically created for you, and the company name and petition will be made live on this website to <strong>WARN</strong> others.</p>
 
@@ -197,16 +199,15 @@ footer a:hover {
 
       <div id="pdfContent"></div>
     </div>
-     <!-- Footer Section -->
-  <footer>
-    <p>&copy; <span id="year"></span> Nigeria Scam Allegations Database. All rights reserved.</p>
-    <p>Built to protect and inform Nigerians about fraudulent companies.</p>
-    <p>For inquiries, email: <a href="mailto:scams@nigeriawatch.org">scams@nigeriawatch.org</a></p>
-    <p>WhatsApp support: <a href="https://wa.me/2347077513836" target="_blank">+234 707 751 3836</a></p>
-  </footer>
-  </div>
 
- 
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; <span id="year"></span> Nigeria Scam Allegations Database. All rights reserved.</p>
+      <p>Built to protect and inform Nigerians about fraudulent companies.</p>
+      <p>For inquiries, email: <a href="mailto:scams@nigeriawatch.org">scams@nigeriawatch.org</a></p>
+      <p>WhatsApp support: <a href="https://wa.me/2347077513836" target="_blank">+234 707 751 3836</a></p>
+    </footer>
+  </div>
 
   <script>
     const searchBox = document.getElementById("searchBox");
