@@ -162,6 +162,10 @@
     footer a:hover {
       text-decoration: underline;
     }
+    /* Center text class for selective centering */
+    .center-text {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -180,11 +184,20 @@
 
     <!-- Scam Info Section -->
     <div class="blue-info" aria-label="Important scam information">
-      <p><strong>Have you been scammed by a Real Estate Company in Lagos?</strong><br />
-      Send your evidence of payment to <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>. A <strong>PETITION</strong> to EFCC will be automatically created for you, and the company name and petition will be made live on this website to <strong>WARN</strong> others.</p>
+      <p class="center-text"><strong>Have you been scammed by a Real Estate Company in Lagos?</strong></p>
+      <p>
+        Send your evidence of payment to <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>.
+        A <strong>PETITION</strong> to EFCC will be automatically created for you, and the company name and petition will be made
+        live on this website to <strong>WARN</strong> others.
+      </p>
 
-      <p><strong>Does your Company appear on this list?</strong><br />
-      To get your company name removed from this database, contact <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>, providing evidence that you have <strong>SUFFICIENTLY</strong> clarified and paid out the fraudulent allegations against your company. Once the petitioner <strong>CONFIRMS</strong> receipt, your company will be removed from the database within 24 hours.</p>
+      <p class="center-text"><strong>Does your Company appear on this list?</strong></p>
+      <p>
+        To get your company name removed from this database, contact
+        <a href="https://wa.me/2347077513836" target="_blank" rel="noopener noreferrer">ADMIN</a>, providing evidence that you have
+        <strong>SUFFICIENTLY</strong> clarified and paid out the fraudulent allegations against your company. Once the petitioner
+        <strong>CONFIRMS</strong> receipt, your company will be removed from the database within 24 hours.
+      </p>
     </div>
 
     <div id="pdfViewerContainer" class="hidden">
@@ -211,14 +224,17 @@
 
     <!-- Footer Section -->
     <footer>
-      <p>&copy; <span id="year"></span> Nigeria Scam Allegations Database. All rights reserved.</p>
-      <p>Built to protect and inform Nigerians about fraudulent companies.</p>
-      <p>For inquiries, email: <a href="mailto:scams@nigeriawatch.org">scams@nigeriawatch.org</a></p>
-      <p>WhatsApp support: <a href="https://wa.me/2347077513836" target="_blank">+234 707 751 3836</a></p>
+      <div class="center-text">
+        <p>&copy; <span id="year"></span> Nigeria Scam Allegations Database. All rights reserved.</p>
+        <p>Built to protect and inform Nigerians about fraudulent companies.</p>
+        <p>For inquiries, email: <a href="mailto:scams@nigeriawatch.org">scams@nigeriawatch.org</a></p>
+        <p>WhatsApp support: <a href="https://wa.me/2347077513836" target="_blank">+234 707 751 3836</a></p>
+      </div>
     </footer>
   </div>
 
  
+
 
   <script>
     const searchBox = document.getElementById("searchBox");
