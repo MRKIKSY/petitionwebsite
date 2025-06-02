@@ -31,13 +31,22 @@
       margin-bottom: 20px;
     }
     .blue-info {
-      background: #e3f2fd; /* footer's light blue */
-      border-left: 6px solid #42a5f5; /* footer's accent blue */
+      background: #e3f2fd;
+      border-left: 6px solid #42a5f5;
       padding: 15px;
       margin-bottom: 20px;
       border-radius: 5px;
       color: #333;
       box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+    .blue-info h3 {
+      margin-top: 0;
+      color: #444;
+      text-align: center;
+    }
+    .blue-info p:first-of-type strong {
+      display: block;
+      text-align: center;
     }
     #searchBox {
       width: 100%;
@@ -130,7 +139,7 @@
     }
     footer {
       background: #e3f2fd;
-      text-align: left;
+      text-align: center;
       padding: 20px;
       margin-top: 40px;
       font-size: 15px;
@@ -165,7 +174,7 @@
 
     <!-- About Us Section -->
     <div class="blue-info" aria-label="Mission statement">
-      <h3 style="margin-top: 0; color: #444;">About Us</h3>
+      <h3>About Us</h3>
       <p>Our mission is to provide a transparent, community-driven platform that establishes and displays live petitions against rogue companies alleged to have defrauded individuals. By sharing verified evidence and petitions here, we help warn the public and promote accountability.</p>
     </div>
 
@@ -208,6 +217,8 @@
       <p>WhatsApp support: <a href="https://wa.me/2347077513836" target="_blank">+234 707 751 3836</a></p>
     </footer>
   </div>
+
+ 
 
   <script>
     const searchBox = document.getElementById("searchBox");
